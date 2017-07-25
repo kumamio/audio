@@ -31,9 +31,19 @@ var buttons = document.getElementsByTagName("input");
 
 for ( button of buttons) {
 	button.addEventListener('click', function() {
-		console.log(this.value);
+		console.log(this.value,this.getAttribute("status"));
 
-		sound.oscillator.type = this.value;
-		sound.play();
+		sound.oscillator.type = this.getAttribute("id");
+
+		if(this.getAttribute("status")=="stop") {
+			this.setAttribute("status","play");
+			this.value = this.getAttribute("id")+":play";
+			sound.play();
+		}
+		else{
+			this.setAttribute("status","stop");  
+			this.value = this.getAttribute("id")+":stop";
+			sound.stop();
+		}
 	})
 }
