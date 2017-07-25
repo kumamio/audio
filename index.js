@@ -30,9 +30,10 @@ var wave = 'sine';
 var buttons = document.getElementsByTagName("input");
 
 for ( button of buttons) {
-	console.log(button.value);
 	button.addEventListener('click', function() {
-		sound.oscillator.type = wave;
+		console.log(this.value);
+
+		sound.oscillator.type = this.value;
 		sound.play();
 	})
 }
